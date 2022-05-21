@@ -19,7 +19,13 @@ const userSchema = new Schema(
       type: String,
       required: true,
       minlength: 5
-    }
+    },
+    coffees: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Coffee'
+      }
+    ]
   },
   {
     toJSON: {
@@ -43,9 +49,6 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('friendCount').get(function() {
-  return this.friends.length;
-});
 
 const User = model('User', userSchema);
 
