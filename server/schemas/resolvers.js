@@ -29,6 +29,9 @@ const resolvers = {
               // .populate('ratings')
               .populate('reviews')
           },
+          coffees: async () => {
+            return await Coffee.find({})
+          },
     },
 
     Mutation: {

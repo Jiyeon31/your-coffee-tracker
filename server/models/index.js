@@ -5,4 +5,4 @@ const Review = require('./Review');
 
 
 
-module.exports = { User, Coffee };
+module.exports = { User, Coffee, Rating, Review };

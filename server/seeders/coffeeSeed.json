@@ -1,0 +1,17 @@
+[
+    {
+        "name": "coffee1",
+        "roast": "light1",
+        "brand": "test1"
+    },
+    {
+        "name": "coffee2",
+        "roast": "light2",
+        "brand": "test2"
+    },
+    {
+        "name": "coffee3",
+        "roast": "light3",
+        "brand": "test3"
+    }
+]
