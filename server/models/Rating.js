@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const ratingSchema = new Schema({
     rating: {
-        type: String,
+        type: Number,
         required: true
     },
     username: {
