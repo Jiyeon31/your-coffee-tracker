@@ -8,6 +8,7 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
+import { FcLike } from "react-icons/fc";
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -38,14 +39,6 @@ const Cart = () => {
     dispatch({ type: TOGGLE_CART });
   }
 
-  function calculateTotal() {
-    let sum = 0;
-    state.cart.forEach((item) => {
-      sum += item.price * item.purchaseQuantity;
-    });
-    return sum.toFixed(2);
-  }
-
   function submitCheckout() {
     const productIds = [];
 
@@ -63,8 +56,8 @@ const Cart = () => {
   if (!state.cartOpen) {
     return (
       <div className="cart-closed" onClick={toggleCart}>
-        <span role="img" aria-label="trash">
-          🛒
+        <span role="img" aria-label="likes">
+          <FcLike />
         </span>
       </div>
     );
@@ -75,7 +68,7 @@ const Cart = () => {
       <div className="close" onClick={toggleCart}>
         [close]
       </div>
-      <h2>Shopping Cart</h2>
+      <h2>Favorite List</h2>
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
@@ -83,12 +76,11 @@ const Cart = () => {
           ))}
 
           <div className="flex-row space-between">
-            <strong>Total: ${calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
+              <button onClick={submitCheckout}>Your Favorites</button>
             ) : (
-              <span>(log in to check out)</span>
+              <span>(log in to manage your list)</span>
             )}
           </div>
         </div>
@@ -97,7 +89,7 @@ const Cart = () => {
           <span role="img" aria-label="shocked">
             😱
           </span>
-          You haven't added anything to your cart yet!
+          You haven't added anything to your favorite list yet!
         </h3>
       )}
     </div>

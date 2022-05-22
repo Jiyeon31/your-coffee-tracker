@@ -1,8 +1,8 @@
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
-  --light: #fafafa;
+  --primary: #392A16;
+  --secondary: #B86F52;
+  --tertiary: #291408;
+  --light: white;
   --dark: #272f32;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
@@ -16,16 +16,18 @@
 html,
 body {
   min-height: 100%;
+  font-family: 'Copperplate Gothic Light';
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Copperplate Gothic Light';
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
   color: var(--dark);
+  background-color: #FFEDC7;
 }
 
 h1,
@@ -34,7 +36,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Copperplate Gothic Light';
   font-weight: 500;
   margin: 5px 0;
   line-height: 1.25;
@@ -73,6 +75,7 @@ a {
   color: var(--tertiary);
   text-decoration: none;
   font-weight: bold;
+  font-family: 'Copperplate Gothic Light';
 }
 
 a:hover {
@@ -97,6 +100,7 @@ button {
   cursor: pointer;
   margin: 0 1px;
   background-color: var(--secondary);
+  font-family: 'Copperplate Gothic Light';
 }
 
 button:hover {
@@ -201,6 +205,10 @@ input:focus {
 
 .error-text {
   color: var(--error);
+}
+
+.products {
+  border-radius: 20%;
 }
 
 @media screen and (max-width: 768px) {

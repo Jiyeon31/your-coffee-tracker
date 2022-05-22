@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 
-function OrderHistory() {
+function FavoriteList() {
   const { data } = useQuery(QUERY_USER);
   let user;
 
@@ -20,7 +20,7 @@ function OrderHistory() {
         {user ? (
           <>
             <h2>
-              Order History for {user.firstName} {user.lastName}
+              Favorite List for {user.firstName} {user.lastName}
             </h2>
             {user.orders.map((order) => (
               <div key={order._id} className="my-2">
@@ -28,15 +28,12 @@ function OrderHistory() {
                   {new Date(parseInt(order.purchaseDate)).toLocaleDateString()}
                 </h3>
                 <div className="flex-row">
-                  {order.products.map(({ _id, image, name, price }, index) => (
+                  {order.products.map(({ _id, image, name }, index) => (
                     <div key={index} className="card px-1 py-1">
                       <Link to={`/products/${_id}`}>
-                        <img alt={name} src={`/images/${image}`} />
+                        <img alt={name} src={`/images/${image}`} className="products"/>
                         <p>{name}</p>
                       </Link>
-                      <div>
-                        <span>${price}</span>
-                      </div>
                     </div>
                   ))}
                 </div>
@@ -49,4 +46,4 @@ function OrderHistory() {
   );
 }
 
-export default OrderHistory;
+export default FavoriteList;
