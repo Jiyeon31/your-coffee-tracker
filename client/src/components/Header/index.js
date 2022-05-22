@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import coffeeBeans from '../../assets/logo/coffee-beans.png';
-
 import Auth from '../../utils/auth';
 
 const Header = () => {
@@ -17,10 +16,13 @@ const Header = () => {
           <Link to="/">
             <h1>How Coffee U bean?</h1>
           </Link>
-
+ 
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
+              <Link className="nav-link" to="/create">
+                Create Review
+              </Link>
               <Link to="/profile">Me</Link>
               <a href="/" onClick={logout}>
                 Logout

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
-import ReviewForm from '../components/ReviewForm';
+import Review from '../components/Review';
 import ReviewList from '../components/ReviewList';
 import FollowList from '../components/FollowList';
 
@@ -78,7 +78,7 @@ const Profile = (props) => {
           />
         </div>
       </div>
-      <div className="mb-3">{!userParam && <ReviewForm />}</div>
+      <div className="mb-3">{!userParam && <Review />}</div>
     </div>
   );
 };

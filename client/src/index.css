@@ -126,6 +126,7 @@ nav a:hover {
 .pill:hover {
   color: var(--secondary);
   background-color: var(--dark);
+  cursor: pointer;
 }
 
 .btn:hover a,

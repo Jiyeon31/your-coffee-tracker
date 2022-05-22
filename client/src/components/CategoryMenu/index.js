@@ -8,7 +8,7 @@ import {
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
-function RoastingLevel() {
+function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
 
   const { categories } = state;
@@ -43,7 +43,7 @@ function RoastingLevel() {
 
   return (
     <div>
-      <h2>Choose a Roasting Level:</h2>
+      <h2>Choose a Category:</h2>
       {categories.map((item) => (
         <button
           key={item._id}
@@ -58,4 +58,4 @@ function RoastingLevel() {
   );
 }
 
-export default RoastingLevel;
+export default CategoryMenu;

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReviewList from '../components/ReviewList';
-import ReviewForm from '../components/ReviewForm';
+import Review from '../components/Review';
 import FollowList from '../components/FollowList';
-import RoastingLevel from '../components/RoastingLevel';
 import ProductList from '../components/ProductList';
+import CategoryMenu from "../components/CategoryMenu";
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
@@ -18,12 +18,12 @@ const Home = () => {
 
   return (
     <main>
+      <CategoryMenu />
+      <ProductList />
       <div className="flex-row justify-space-between">
-        <RoastingLevel />
-        <ProductList />
         {loggedIn && (
           <div className="col-12 mb-3">
-            <ReviewForm />
+            <Review />
           </div>
         )}
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>

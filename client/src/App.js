@@ -10,6 +10,9 @@ import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Review from './components/Review';
+import ReviewList from './components/ReviewList';
+import ReviewEdit from './components/ReviewEdit';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -21,7 +24,7 @@ import Signup from './pages/Signup';
 import { StoreProvider } from './utils/GlobalState';
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://192.168.1.187/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -49,11 +52,14 @@ function App() {
             <StoreProvider>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/profile/:username?" component={Profile} />
-              <Route exact path="/review/:id" component={SingleReview} />
-              <Route exact path="/products/:id" component={Detail} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/reviewlist" component={ReviewList} />
+              <Route path="/edit/:id" component={ReviewEdit} />
+              <Route path="/review" component={Review} />
+              <Route path="/profile/:username?" component={Profile} />
+              <Route path="/review/:id" component={SingleReview} />
+              <Route path="/products/:id" component={Detail} />
               <Route component={NoMatch} />
             </Switch>
             </StoreProvider>

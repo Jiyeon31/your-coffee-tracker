@@ -45,7 +45,7 @@ function ProductList() {
 
   return (
     <div className="my-2">
-      <h2>Your Favorite Coffee Beans:</h2>
+      <h2>Our Coffee Beans:</h2>
       {state.products.length ? (
         <div className="flex-row">
           {filterProducts().map((product) => (
@@ -58,7 +58,7 @@ function ProductList() {
           ))}
         </div>
       ) : (
-        <h3>You haven't added any coffee bean yet!</h3>
+        <p>There's No Coffee Bean Yet!</p>
       )}
       {loading ? <img src={spinner} alt="loading" /> : null}
     </div>

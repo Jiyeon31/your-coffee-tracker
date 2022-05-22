@@ -1,21 +1,20 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+const cors = require("cors");
+require("dotenv").config({ path: "./config/config.env" });
 
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
 
-const PORT = process.env.PORT || 3001;
 const app = express();
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: authMiddleware
-});
 
+const PORT = process.env.PORT || 3001;
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(require("./routes/record"));
 
 // Serve up static assets
 app.use('/images', express.static(path.join(__dirname, '../client/images')));
@@ -27,9 +26,21 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
+const corsOptions = {
+    origin: "http://localhost:3000",
+    credentials: true
+  };
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    cors: corsOptions,
+    csrfPrevention: true,
+    context: authMiddleware
+  });
+  
   await server.start();
   server.applyMiddleware({ app });
   
