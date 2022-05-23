@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Category, Order } = require('../models');
+const { User, Product, Category, Order, Review } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -78,8 +78,8 @@ const resolvers = {
 
       return { session: session.id };
     },
-    reviews: async (parent, { firstName }) => {
-      const params = firstName ? { firstName } : {};
+    reviews: async (parent, { lastName }) => {
+      const params = lastName ? { lastName } : {};
       return Review.find(params).sort({ createdAt: -1 });
     },
     review: async (parent, { _id }) => {
@@ -109,7 +109,7 @@ const resolvers = {
       if (context.user) {
         const updatedProduct = await Product.findOneAndUpdate(
           { _id: productId },
-          { $push: { reviews: { reviewBody, firstName: context.user.firstName, userId: context.user._id } } },
+          { $push: { reviews: { reviewBody, firstName: context.user.firstName } } },
           { new: true, runValidators: true }
         );
 
