@@ -29,6 +29,7 @@ export const ADD_ORDER = gql`
 
 export const ADD_USER = gql`
   mutation addUser(
+    $userName: String!
     $firstName: String!
     $lastName: String!
     $email: String!
@@ -37,6 +38,7 @@ export const ADD_USER = gql`
     addUser(
       firstName: $firstName
       lastName: $lastName
+      userName: $userName
       email: $email
       password: $password
     ) {
@@ -57,6 +59,7 @@ export const ADD_REVIEW = gql`
         reviewBody
         createdAt
         firstName
+        userName
         userId
       }
     }

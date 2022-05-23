@@ -12,6 +12,7 @@ export const QUERY_PRODUCTS = gql`
         createdAt
         reviewBody
         firstName
+        userName
       }
       category {
         _id
@@ -55,6 +56,7 @@ export const QUERY_USER = gql`
     user(firstName: $firstName) {
       _id
       firstName
+      userName
       lastName
       email
       reviews {
