@@ -1,12 +1,20 @@
-import { Rating, AirbnbRating } from 'react-native-ratings';
+import React, { Component } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { Constants } from 'expo';
 
-ratingCompleted = (rating) => {
-    console.log("Rating is: " + rating)
-}
+import { Rating, AirbnbRating } from 'react-native-ratings'; //5.3.0
 
-function Ratings(){
+export default class App extends Component {
+  render() {
     return (
-        <>
+      <View style={styles.container}>
+        <Text style={styles.tite}>
+          React Native Ratings
+        </Text>
+        
+        <Text style={styles.paragraph}>
+          Airbnb-style ratings
+        </Text>
         <AirbnbRating />
         <AirbnbRating
           count={11}
@@ -14,7 +22,11 @@ function Ratings(){
           defaultRating={11}
           size={20}
         />
-                <Rating
+        
+        <Text style={styles.paragraph}>
+          Ratings
+        </Text>
+        <Rating
           showRating
           imageSize={40}
           onFinishRating={this.ratingCompleted}
@@ -27,7 +39,30 @@ function Ratings(){
           showRating
           onFinishRating={this.ratingCompleted}
         />
-        </>
-    )}
+      </View>
+    );
+  }
+}
 
- export default Ratings;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+  },
+  tite: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: '#34495e'
+  },
+  paragraph: {
+    margin: 10,
+    marginTop: 40,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#34495e',
+  },
+});
