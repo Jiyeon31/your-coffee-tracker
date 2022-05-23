@@ -1,8 +1,9 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Product, Category, User } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
+  await User.deleteMany({});
 
   const categories = await Category.insertMany([
     { name: 'Light' },

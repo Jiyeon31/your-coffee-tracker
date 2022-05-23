@@ -7,6 +7,12 @@ export const QUERY_PRODUCTS = gql`
       name
       description
       image
+      reviews {
+        _id
+        createdAt
+        reviewBody
+        firstName
+      }
       category {
         _id
       }
@@ -45,10 +51,17 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_USER = gql`
-  {
-    user {
+  query user($firstName: String!) {
+    user(firstName: $firstName) {
+      _id
       firstName
       lastName
+      email
+      reviews {
+        _id
+        reviewBody
+        createdAt
+      }
       orders {
         _id
         purchaseDate
@@ -62,3 +75,29 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      firstNname
+      email
+      reviews {
+        _id
+        reviewBody
+        createdAt
+      }
+    }
+  }
+`;
+
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      firstNname
+      email
+    }
+  }
+`;
+
