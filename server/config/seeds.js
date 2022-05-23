@@ -17,66 +17,66 @@ db.once('open', async () => {
 
   const products = await Product.insertMany([
     {
-      name: 'Starbucks Veranda',
+      name: 'Starbucks Veranda Blend',
       description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      'Roasting Starbucks Veranda Blend Ground Coffee for a shorter time allows the delicate nuances of soft cocoa and lightly toasted nuts to blossom. Mellow and flavorful, this coffee brews a delightfully gracious cup that’s perfect for welcoming friends.',
       image: 'lightveranda.jpg',
       category: categories[0]._id
     },
     {
-      name: 'Peets',
+      name: 'Peets Luminosa Breakfast Blend',
       description:
-        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
+        'Formerly known as Colombia Luminosa, we approached this bright blend, our first light roast, as we do all our coffees: carefully select the very best beans, then hand roast them in small batches to achieve their utmost flavor.',
       image: 'lightpeets.jpg',
       category: categories[0]._id
     },
     {
-      name: 'Cameron',
+      name: 'Cameron Breakfast Blend',
       category: categories[0]._id,
       description:
-        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
+        'Say good morning to this perfect blend of Central and South American coffees that are slow roasted to a mild, yet rich flavor.',
       image: 'lightcameron.jpg'
     },
     {
-      name: 'Caribou',
+      name: 'Caribou Blend',
       category: categories[1]._id,
       description:
-        'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
+        'A signature blend so good, we put our name on it. Caribou Blend is a smooth, approachable medium roast that evokes cozy coffeehouses and — what else — a perfect cup of coffee.',
       image: 'mediumcaribou.jpg'
     },
     {
-      name: 'Seattle',
+      name: 'Seattle\'s Best Level 4 Medium-Dark & Rich Ground Coffee',
       category: categories[1]._id,
       description:
-        'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Duis dignissim nisi vel tortor imperdiet finibus. Aenean aliquam sagittis rutrum.',
+        'From the first sip you know this one is special. A bold and roasty blend of premium beans that brews up a perfectly balanced cup of coffee.',
       image: 'mediumseattle.jpg'
     },
     {
-      name: 'Sumatra Volcano',
+      name: 'Sumatra Mandheling Coffee',
       category: categories[1]._id,
       description:
-        'Vestibulum risus metus, luctus non tortor quis, tincidunt consectetur ex. Nullam vitae lobortis ligula, ut sagittis massa. Curabitur consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
+        'Rare Indonesian coffee that is delightfully smooth with a rich, heavy body, low acidity, exotic flavor with an intense syrupy aftertaste and earthy richness.',
       image: 'mediumvolcano.jpg'
     },
     {
-      name: 'Don Pablo',
+      name: 'Don Pablo Signature Blend',
       category: categories[2]._id,
       description:
-        'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
+        'The slight caramelization of the natural sugars in the bean give this Medium-Dark coffee a touch of roastiness, while it still retains its natural flavor character, giving it a sweet, pleasant aftertaste.',
       image: 'mediumdarkpablo.jpg',
     },
     {
-      name: 'Life Boost',
+      name: 'Lifeboost Midnight Coffee',
       category: categories[3]._id,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
+        'The healthiest Darkest roast coffee possible, delivered to your doorstep. Midnight.',
       image: 'darklifeboost.jpg'
     },
     {
       name: 'Mayorga',
       category: categories[3]._id,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
+        'Using our signature latin, slow-roasting process, we are able to achieve a distinctly bold, sweet flavor that has a surprisingly smooth finish.',
       image: 'darkmayorga.jpg'
     }
   ]);
