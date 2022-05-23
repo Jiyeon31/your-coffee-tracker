@@ -97,6 +97,19 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    addReview: async (parent, { productId, reviewBody }, context) => {
+      if (context.user) {
+        const updatedProduct = await Product.findOneAndUpdate(
+          { _id: productId },
+          { $push: { reviews: { reviewBody, firstName: context.user.firstName } } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedProduct;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });

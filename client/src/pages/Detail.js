@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
+import ReviewForm from '../components/ReviewForm';
+import ReviewList from '../components/ReviewList';
+import Auth from '../utils/auth';
+
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import {
@@ -106,6 +110,14 @@ function Detail() {
             alt={currentProduct.name}
             className="products"
           />
+          
+          <div>
+          {Auth.loggedIn() && <ReviewForm productId={currentProduct._id} />}
+          </div>
+          <div>
+          <ReviewList reviews={currentProduct.reviews} />
+          </div>
+
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}

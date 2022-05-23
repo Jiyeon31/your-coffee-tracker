@@ -7,6 +7,12 @@ export const QUERY_PRODUCTS = gql`
       name
       description
       image
+      reviews {
+        _id
+        createdAt
+        reviewBody
+        firstName
+      }
       category {
         _id
       }

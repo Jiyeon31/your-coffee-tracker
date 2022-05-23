@@ -47,3 +47,16 @@ export const ADD_USER = gql`
     }
   }
 `;
+export const ADD_REVIEW = gql`
+  mutation addReview($productId: ID!, $reviewBody: String!) {
+    addReview(productId: $productId, reviewBody: $reviewBody) {
+      _id
+      reviews {
+        _id
+        reviewBody
+        createdAt
+        firstName
+      }
+    }
+  }
+`;
