@@ -2,6 +2,7 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import coffeeBeans from '../../assets/coffee-beans.png';
+import './style.css';
 
 function Nav() {
 
@@ -10,8 +11,8 @@ function Nav() {
       return (
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
+            <Link to="/success">
+              Favorite List
             </Link>
           </li>
           <li className="mx-1">
@@ -25,12 +26,12 @@ function Nav() {
     } else {
       return (
         <ul className="flex-row">
-          <li className="mx-1">
+          <li className="mx-1 signup">
             <Link to="/signup">
               Signup
             </Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 login">
             <Link to="/login">
               Login
             </Link>
@@ -45,7 +46,7 @@ function Nav() {
       <h1>
       <header className="bg-secondary mb-4 py-2 flex-row align-center">
         <div className="container flex-row justify-space-between-lg justify-center align-center">
-          <img src={coffeeBeans} style={{ width: "5%" }} alt="logo"/>
+          <img src={coffeeBeans} style={{ width: "8%" }} alt="logo"/>
             <a href="/">
               <h1>How Coffee U bean?</h1>
             </a>
