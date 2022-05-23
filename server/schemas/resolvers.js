@@ -109,7 +109,7 @@ const resolvers = {
       if (context.user) {
         const updatedProduct = await Product.findOneAndUpdate(
           { _id: productId },
-          { $push: { reviews: { reviewBody, firstName: context.user.firstName } } },
+          { $push: { reviews: { reviewBody, firstName: context.user.firstName, userId: context.user._id } } },
           { new: true, runValidators: true }
         );
 
