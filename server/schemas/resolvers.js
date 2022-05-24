@@ -32,19 +32,11 @@ const resolvers = {
         .populate('thoughts')
         .populate('friends');
     },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
-        });
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-
-      throw new AuthenticationError('Not logged in');
+    user: async (parent, { userName }) => {
+      return User.findOne({ userName })
+        .select('-__v -password')
+        .populate('ratedProducts')
+        
     },
     categories: async () => {
       return await Category.find();

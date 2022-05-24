@@ -55,25 +55,14 @@ export const QUERY_USER = gql`
   query user($userName: String!) {
     user(userName: $userName) {
       _id
-      firstName
       userName
-      lastName
       email
-      reviews {
+      ratedProductCount
+      ratedProducts {
         _id
-        reviewBody
-        createdAt
+        name
       }
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          image
-        }
-      }
+      
     }
   }
 `;

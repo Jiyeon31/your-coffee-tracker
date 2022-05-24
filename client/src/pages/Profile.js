@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
-import RatedList from '../components/RatedList';
+import ReviewList from '../components/ReviewList';
 import FavoriteList from './FavoriteList';
 
 import {useQuery, useMutation} from '@apollo/client';
@@ -23,11 +23,10 @@ const urlUser = currentUrl.split("=")[1];
 
   const user = data?.me || data?.user || {};
 
-  
+  console.log(user.ratedProductCount);
 
   // redirect to personal profile page if firstName is yours
-  console.log ("THE USER IS");
-  console.log(user);
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -52,8 +51,8 @@ const urlUser = currentUrl.split("=")[1];
 
 
       <div className="col-12 col-lg-3 mb-3">
-          <RatedList
-            userName={user.userName}
+          <ReviewList
+            username={user.userName}
             ratedProductCount={user.ratedProductCount}
             ratedProducts={user.ratedProducts}
           />
