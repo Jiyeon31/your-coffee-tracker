@@ -46,6 +46,12 @@ const typeDefs = gql`
     firstName: String
   }
 
+  type Like {
+    id: ID
+    createdAt: String
+    firstName: String
+  }
+
 
 
   type Checkout {
@@ -73,6 +79,7 @@ const typeDefs = gql`
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
     addReview(productId: ID!, reviewBody: String!): Product
+    likePost(productId: ID!): Product
   }
 `;
 

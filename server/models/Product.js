@@ -22,7 +22,7 @@ const productSchema = new Schema({
     required: true
   },
   reviews: [reviewSchema],
-  ratings: [ratingSchema]
+  ratings: [ratingSchema],
 });
 
 const Product = mongoose.model('Product', productSchema);

@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 
 import ReviewForm from '../components/ReviewForm';
 import ReviewList from '../components/ReviewList';
+import LikeButton from '../components/LikeButton';
 import Auth from '../utils/auth';
 
 import Cart from '../components/Cart';
@@ -111,13 +112,18 @@ function Detail() {
             className="products"
           />
           
+          <div> <LikeButton /></div>
           <div>
-          {Auth.loggedIn() && <ReviewForm productId={currentProduct._id} />}
+          {Auth.loggedIn() && <ReviewForm productId={currentProduct._id}  /> 
+          } 
           </div>
           <div>
           <ReviewList reviews={currentProduct.reviews} />
           </div>
 
+
+
+        
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}

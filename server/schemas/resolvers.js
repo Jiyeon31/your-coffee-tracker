@@ -138,7 +138,20 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
+    },
+    likePost: async (parent, { productId }, context) => {
+      if (context.user) {
+        const updatedProduct = await Product.findOneAndUpdate(
+          { _id: productId },
+          { $push: { likes: { firstName: context.user.firstName } } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedProduct;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
   }
 };
 
