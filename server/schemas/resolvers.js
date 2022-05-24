@@ -26,6 +26,12 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('thoughts')
+        .populate('friends');
+    },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -161,7 +167,7 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { ratedProducts: productId } },
           { new: true }
-        ).populate('friends');
+        ).populate('ratedProducts');
 
         return updatedUser;
       }

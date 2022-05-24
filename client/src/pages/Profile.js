@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
-import ReviewList from '../components/ReviewList';
+import RatedList from '../components/RatedList';
 import FavoriteList from './FavoriteList';
 
 import {useQuery, useMutation} from '@apollo/client';
@@ -52,8 +52,8 @@ const urlUser = currentUrl.split("=")[1];
 
 
       <div className="col-12 col-lg-3 mb-3">
-          <ReviewList
-            username={user.username}
+          <RatedList
+            userName={user.userName}
             ratedProductCount={user.ratedProductCount}
             ratedProducts={user.ratedProducts}
           />

@@ -70,11 +70,10 @@ export const ADD_RATED_PRODUCT = gql`
   mutation addRatedProduct($id: ID!) {
     addRatedProduct(productId: $id) {
       _id
-      username
-      
-      ratedPorducts {
+      ratedProductCount
+      ratedProducts {
         _id
-        productId
+        name
       }
     }
   }
@@ -87,7 +86,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      radtedProductCount
+      ratedProductCount
       ratedProducts {
         _id
         productId

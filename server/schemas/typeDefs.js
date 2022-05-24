@@ -74,7 +74,7 @@ const typeDefs = gql`
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
     addReview(productId: ID!, reviewBody: String!): Product
-    addRatedProduct(productId: ID!): Product
+    addRatedProduct(productId: ID!): User
   }
 `;
 

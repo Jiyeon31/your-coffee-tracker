@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RatedList from '../components/RatedList'
 
 
 
 
-const RatedList = ({ ratedProductCount, username, ratedProducts }) => {
+const RatedList = ({ ratedProductCount, userName, ratedProducts }) => {
   if (!ratedProducts || !ratedProductCount.length) {
-    return <p className="bg-dark text-light p-3">{username}, rate some products!</p>;
+    return <p className="bg-dark text-light p-3">{userName}, rate some products!</p>;
   }
 
   return (
@@ -28,4 +27,4 @@ const RatedList = ({ ratedProductCount, username, ratedProducts }) => {
   );
 };
 
-export default FriendList;
+export default RatedList;
