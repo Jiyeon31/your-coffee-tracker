@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_RATED_PRODUCT, ADD_REVIEW } from '../../utils/mutations';
 
-const ReviewForm = ({ productId }) => {
+const ReviewForm = ({ productId, name }) => {
   const [reviewBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const[addRatedProduct] = useMutation(ADD_RATED_PRODUCT);
   const [addReview, { error }] = useMutation(ADD_REVIEW);
+  
+
+
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -20,6 +23,10 @@ const ReviewForm = ({ productId }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+
+    console.log (productId)
+    console.log(reviewBody)
+    console.log(name)
     try {
       await addReview({
         variables: { reviewBody, productId },

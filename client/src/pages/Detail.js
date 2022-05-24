@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import ReviewForm from '../components/ReviewForm';
@@ -14,7 +14,7 @@ import {
   ADD_TO_CART,
   UPDATE_PRODUCTS,
 } from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_ME, QUERY_PRODUCTS, QUERY_USER } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
@@ -28,6 +28,8 @@ function Detail() {
 
   const { products, cart } = state;
 
+  
+  
   useEffect(() => {
     // already in global store
     if (products.length) {
@@ -111,7 +113,7 @@ function Detail() {
             </button>
           </p>
                     <div>
-          {Auth.loggedIn() && <ReviewForm productId={currentProduct._id} />}
+          {Auth.loggedIn() && <ReviewForm productId={currentProduct._id} name = {currentProduct.name} />}
           </div>
           <div>
           <ReviewList reviews={currentProduct.reviews} />
