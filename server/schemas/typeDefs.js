@@ -5,7 +5,6 @@ const typeDefs = gql`
     _id: ID
     name: String
   }
-
   type Product {
     _id: ID
     name: String
@@ -15,36 +14,33 @@ const typeDefs = gql`
     reviewCount: Int
     reviews: [Review]
   }
-
   type Order {
     _id: ID
     purchaseDate: String
     products: [Product]
   }
-
   type User {
     _id: ID
     firstName: String
     lastName: String
+    userName: String
     email: String
     orders: [Order]
     reviews: [Review]
   }
-
   type Checkout {
     session: ID
   }
-
   type Auth {
     token: ID
     user: User
   }
-
   type Review {
     _id: ID
     reviewBody: String
     createdAt: String
     firstName: String
+    userName: String
     userId: String
   }
   
@@ -59,12 +55,12 @@ const typeDefs = gql`
     review(_id: ID!): Review
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
+    findReviews(_id: ID!): Review
   }
-
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!, userName: String!): Auth
     addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
+    updateUser(firstName: String, lastName: String, email: String, password: String, userName: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
     addReview(productId: ID!, reviewBody: String!): Product

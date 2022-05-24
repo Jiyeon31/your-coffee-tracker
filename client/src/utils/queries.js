@@ -12,6 +12,7 @@ export const QUERY_PRODUCTS = gql`
         createdAt
         reviewBody
         firstName
+        userName
       }
       category {
         _id
@@ -51,10 +52,11 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_USER = gql`
-  query user($firstName: String!) {
-    user(firstName: $firstName) {
+  query user($userName: String!) {
+    user(userName: $userName) {
       _id
       firstName
+      userName
       lastName
       email
       reviews {
@@ -100,4 +102,3 @@ export const QUERY_ME_BASIC = gql`
     }
   }
 `;
-

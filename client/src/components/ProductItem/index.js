@@ -48,7 +48,7 @@ function ProductItem(item) {
         <p>{name}</p>
       </Link>
       <button className="add" onClick={addToCart}>Add to favorite</button>
-      <button className="add"><Link to="/ratings">Rating</Link></button>
+      <button className="add">Rating</button>
     </div>
   );
 }

@@ -5,6 +5,15 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
+    findReviews: async(parent, args, context) => {
+      const productInfo = await Product.findById({_id: args._id}).populate({
+        populate: 'reviews'
+      })
+
+      return productInfo;
+
+    },
+
     me: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findOne({ _id: context.user._id }).populate({
@@ -107,9 +116,10 @@ const resolvers = {
     },
     addReview: async (parent, { productId, reviewBody }, context) => {
       if (context.user) {
+        // see if userId exists already for that product.  If so, then just return, if not continue...
         const updatedProduct = await Product.findOneAndUpdate(
           { _id: productId },
-          { $push: { reviews: { reviewBody, firstName: context.user.firstName, userId: context.user._id } } },
+          { $push: { reviews: { reviewBody, firstName: context.user.firstName, userName: context.user.userName, userId: context.user._id } } },
           { new: true, runValidators: true }
         );
 

@@ -49,7 +49,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/profile/:lastName?" component={Profile} />
+              <Route exact path="/profile/:firstName?" component={Profile} />
               <Route exact path="/success" component={Success} />
               <Route exact path="/favoritelist" component={FavoriteList} />
               <Route exact path="/products/:id" component={Detail} />
