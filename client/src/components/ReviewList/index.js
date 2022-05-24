@@ -12,7 +12,7 @@ const ReviewList = ({ reviews, title }) => {
           reviews.map(review => (
             <p className="pill mb-3" key={review._id}>
               {review.reviewBody} {' '}
-              <Link to={`/profile/${review.userName}`} style={{ fontWeight: 700 }}>
+              <Link to={`/profile/?user=${review.userName}`} style={{ fontWeight: 700 }}>
                 {review.userName} on {review.createdAt}
               </Link>
             </p>

@@ -65,3 +65,34 @@ export const ADD_REVIEW = gql`
     }
   }
 `;
+
+export const ADD_RATED_PRODUCT = gql`
+  mutation addRatedProduct($id: ID!) {
+    addRatedProduct(productId: $id) {
+      _id
+      username
+      
+      ratedPorducts {
+        _id
+        productId
+      }
+    }
+  }
+`;
+
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      radtedProductCount
+      ratedProducts {
+        _id
+        productId
+      }
+      
+    }
+  }
+`;

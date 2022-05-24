@@ -114,6 +114,7 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    
     addReview: async (parent, { productId, reviewBody }, context) => {
       if (context.user) {
         // see if userId exists already for that product.  If so, then just return, if not continue...
@@ -135,6 +136,7 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+
   
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -152,8 +154,22 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addRatedProduct: async (parent, { productId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { ratedProducts: productId } },
+          { new: true }
+        ).populate('friends');
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
     }
   }
 };
+  
 
 module.exports = resolvers;

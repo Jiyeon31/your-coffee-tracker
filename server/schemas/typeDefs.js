@@ -27,9 +27,10 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     userName: String
+    ratedProductCount: Int
     email: String
-    orders: [Order]
-    reviews: [Review]
+    ratedProducts: [Product]
+    
   }
 
   type Checkout {
@@ -49,11 +50,13 @@ const typeDefs = gql`
     userName: String
     userId: String
   }
+
+  
   
   type Query {
     me: User
     users: [User]
-    user(firstName: String!): User
+    user(userName: String!): User
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
@@ -71,6 +74,7 @@ const typeDefs = gql`
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
     addReview(productId: ID!, reviewBody: String!): Product
+    addRatedProduct(productId: ID!): Product
   }
 `;
 
