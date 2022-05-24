@@ -115,15 +115,37 @@ const resolvers = {
     
     addReview: async (parent, { productId, reviewBody }, context) => {
       if (context.user) {
-        // see if userId exists already for that product.  If so, then just return, if not continue...
+
+        const user = await User.findOne({ _id: context.user._id }).populate({
+          path: 'users.ratedProducts',
+          populate: 'ratedProducts'
+        })
+
+        const alreadyRated = user.ratedProducts.includes(productId)
+
+        console.log (alreadyRated)
+
+        if (!alreadyRated) {
+
+          // see if userId exists already for that product.  If so, then just return, if not continue...
         const updatedProduct = await Product.findOneAndUpdate(
           { _id: productId },
           { $push: { reviews: { reviewBody, firstName: context.user.firstName, userName: context.user.userName, userId: context.user._id } } },
           { new: true, runValidators: true }
         );
         
+
+
+          console.log ('NOW RATED!')
+        
+
+        
         return updatedProduct;
+      } else {
+        throw new AuthenticationError("You have already rated this item!")
       }
+
+    }
 
       throw new AuthenticationError('You need to be logged in!');
     },
