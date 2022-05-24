@@ -6,11 +6,14 @@ import './style.css';
 
 function Nav() {
 
-  const userName = Auth.getProfile().data.userName;
+  
   
 
   function showNavigation() {
+    
     if (Auth.loggedIn()) {
+
+      const userName = Auth.getProfile().data.userName;
       return (
         <ul className="flex-row">
           <li className="mx-1">
