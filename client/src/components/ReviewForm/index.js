@@ -74,7 +74,7 @@ const ReviewForm = ({ productId, name }) => {
         </button>
       </form>
 
-      {error && <div>Something went wrong... {productId}</div>}
+      {error && <div>Something went wrong...Perhaps you aren't logged in or already reviewed this item?</div>}
       
     </div>
   );

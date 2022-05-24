@@ -6,6 +6,9 @@ import './style.css';
 
 function Nav() {
 
+  const userName = Auth.getProfile().data.userName;
+  
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
@@ -16,7 +19,7 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
-            <Link to="/profile">
+            <Link to={`/profile/?user=${userName}`}>
               Me
             </Link>
           </li>
