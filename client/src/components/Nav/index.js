@@ -17,11 +17,6 @@ function Nav() {
       return (
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to="/addproduct">
-              Add Product
-            </Link>
-          </li>
-          <li className="mx-1">
             <Link to={`/profile/?user=${userName}`}>
               Me
             </Link>

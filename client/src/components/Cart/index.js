@@ -74,15 +74,6 @@ const Cart = () => {
           {state.cart.map((item) => (
             <CartItem key={item._id} item={item} />
           ))}
-
-          <div className="flex-row space-between">
-
-            {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Your Favorites</button>
-            ) : (
-              <span>(log in to manage your list)</span>
-            )}
-          </div>
         </div>
       ) : (
         <h3>

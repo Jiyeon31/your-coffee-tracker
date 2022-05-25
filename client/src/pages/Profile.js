@@ -1,8 +1,6 @@
 import React from 'react';
-import { Redirect, useParams } from 'react-router-dom';
 
 import RatedList from '../components/RatedList';
-import FavoriteList from './FavoriteList';
 
 import {useQuery, useMutation} from '@apollo/client';
 import {QUERY_USER, QUERY_ME} from '../utils/queries';
