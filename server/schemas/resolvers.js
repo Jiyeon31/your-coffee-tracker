@@ -33,9 +33,20 @@ const resolvers = {
         .populate('friends');
     },
     user: async (parent, { userName }) => {
-      return User.findOne({ userName })
+      const user = await User.findOne({ userName })
         .select('-__v -password')
-        .populate('ratedProducts')
+      console.log(user);
+      const {ratedProducts} = user;
+
+      const products = [];
+
+      for (let item in ratedProducts) {
+        console.log(ratedProducts[item])
+        products.push(await Product.findOne(ratedProducts[item]))
+        
+      }
+
+      return {user, products}
         
     },
     categories: async () => {
@@ -175,11 +186,11 @@ const resolvers = {
 
       return { token, user };
     },
-    addRatedProduct: async (parent, { productId }, context) => {
+    addRatedProduct: async (parent, { productId}, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { ratedProducts: productId } },
+          { $addToSet: { ratedProducts: productId} },
           { new: true }
         ).populate('ratedProducts');
 

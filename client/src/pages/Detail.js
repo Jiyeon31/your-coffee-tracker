@@ -113,7 +113,7 @@ function Detail() {
             </button>
           </p>
                     <div>
-          {Auth.loggedIn() && <ReviewForm productId={currentProduct._id} name = {currentProduct.name} />}
+          {Auth.loggedIn() && <ReviewForm productId={currentProduct._id} name = {currentProduct.name} image = {currentProduct.image} />}
           </div>
           <div>
           <ReviewList reviews={currentProduct.reviews} />

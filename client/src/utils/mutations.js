@@ -73,25 +73,10 @@ export const ADD_RATED_PRODUCT = gql`
       ratedProductCount
       ratedProducts {
         _id
-        name
+        
+        
       }
     }
   }
 `;
 
-
-export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      email
-      ratedProductCount
-      ratedProducts {
-        _id
-        productId
-      }
-      
-    }
-  }
-`;

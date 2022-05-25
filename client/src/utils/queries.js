@@ -52,20 +52,19 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_USER = gql`
-  query user($userName: String!) {
-    user(userName: $userName) {
+query user($userName: String!) {
+  user(userName: $userName) {
+    user {
       _id
-      userName
-      email
-      ratedProductCount
-      ratedProducts {
-        _id
-        name
-      }
-      
+    }
+    products {
+      _id
+      name
+      image
     }
   }
-`;
+}
+`
 
 export const QUERY_ME = gql`
   {

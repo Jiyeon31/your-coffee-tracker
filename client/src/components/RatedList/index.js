@@ -1,22 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProductItem from '../ProductItem';
 
 
 
 
-const RatedList = ({ ratedProductCount, ratedProducts }) => {
+const RatedList = ({ratedProducts }) => {
 
+  console.log (ratedProducts)
  
 
 
-  if (ratedProductCount > 0) {
+  if (1 > 0) {
     
     return (
     <div>
         {ratedProducts.map(ratedProduct => (
-        <button className="btn w-100 display-block mb-2" key= {ratedProduct._id}>
-          <Link to={`/products/${ratedProduct._id}`}>{ratedProduct._id}</Link>
-        </button>
+        
+       
+          
+          <ProductItem
+              key={ratedProduct._id}
+              _id={ratedProduct._id}
+              image={ratedProduct.image}
+              name={ratedProduct.name}
+              className="products"
+            />
+        
       ))}
 
         
@@ -24,7 +34,7 @@ const RatedList = ({ ratedProductCount, ratedProducts }) => {
     </div>
     )
   }
-  console.log(ratedProductCount + 1)
+  
  
       
   
