@@ -26,6 +26,7 @@ const CartItem = ({ item }) => {
         <img
           src={`/images/${item.image}`}
           alt=""
+          className="cartcoffee"
         />
         
       </Link>
