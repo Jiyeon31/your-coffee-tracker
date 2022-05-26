@@ -21,7 +21,7 @@ const ReviewForm = ({ productId, name, image }) => {
         console.log(productId)
         const {products}  = cache.readQuery({ 
           query: QUERY_PRODUCTS,      
-          variables: {_id: productId}      
+          variables: {id: productId}      
                
         
         });
@@ -29,8 +29,8 @@ const ReviewForm = ({ productId, name, image }) => {
         console.log(products);
         cache.writeQuery({
           query: QUERY_PRODUCTS,
-          variables: {id: productId},
-          data: { products: [addReview, ...products] },
+          variables: {id: productId, },
+          data: { products: [addReview, ...products, ]  },
         });
       } catch (e) {
         console.error(e);
