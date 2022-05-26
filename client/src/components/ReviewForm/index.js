@@ -10,15 +10,46 @@ const ReviewForm = ({ productId, name, image }) => {
   const [reviewBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const[addRatedProduct] = useMutation(ADD_RATED_PRODUCT);
-  const [addReview, { error }] = useMutation(ADD_REVIEW);
 
 
-  const {data} = useQuery(QUERY_PRODUCT, {
-    variables: {_id: productId}
-  
+
+  const [addReview, { error }] = useMutation(ADD_REVIEW, {
+    update(cache, { data: { addReview } }) {
+      try {
+        // update thought array's cache
+        // could potentially not exist yet, so wrap in a try/catch
+        console.log(productId)
+        const {product}  = cache.readQuery({ 
+          query: QUERY_PRODUCT,      
+          variables: {_id: productId}      
+               
+        
+        });
+        console.log ("we trying");
+        console.log(product);
+        cache.writeQuery({
+          query: QUERY_PRODUCT,
+          data: { product: [addReview, ...product] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      
+    },
   });
 
-  console.log(data);
+
+
+
+
+
+
+
+
+
+
+
  
 
   // update state based on form input changes
