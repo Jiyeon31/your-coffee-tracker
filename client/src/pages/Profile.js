@@ -1,9 +1,8 @@
 import React from 'react';
-
 import RatedList from '../components/RatedList';
 
-import {useQuery, useMutation} from '@apollo/client';
-import {QUERY_USER, QUERY_ME} from '../utils/queries';
+import {useQuery} from '@apollo/client';
+import {QUERY_USER} from '../utils/queries';
 import Auth from '../utils/auth';
 
 

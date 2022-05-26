@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import ReviewForm from '../components/ReviewForm';
@@ -14,7 +14,7 @@ import {
   ADD_TO_CART,
   UPDATE_PRODUCTS,
 } from '../utils/actions';
-import { QUERY_ME, QUERY_PRODUCTS, QUERY_USER } from '../utils/queries';
+import { QUERY_PRODUCTS} from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
