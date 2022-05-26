@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_RATED_PRODUCT, ADD_REVIEW } from '../../utils/mutations';
+import { useQuery } from '@apollo/client';
+import { QUERY_PRODUCT} from '../../utils/queries';
+
+
 
 const ReviewForm = ({ productId, name, image }) => {
   const [reviewBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const[addRatedProduct] = useMutation(ADD_RATED_PRODUCT);
   const [addReview, { error }] = useMutation(ADD_REVIEW);
+
+
+  const {data} = useQuery(QUERY_PRODUCT, {
+    variables: {_id: productId}
   
-  console.log ("FINDM EMEMEMEMEM")
-    console.log (name)
-    console.log(image)
+  });
+
+  console.log(data);
  
 
   // update state based on form input changes

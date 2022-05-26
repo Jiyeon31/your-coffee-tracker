@@ -69,6 +69,10 @@ const resolvers = {
     product: async (parent, { _id }) => {
       return await Product.findById(_id).populate('category');
     },
+    getProduct: async (parent, {_id}) => {
+      return await Product.findById(_id);
+
+    },
     reviews: async (parent, { lastName }) => {
       const params = lastName ? { lastName } : {};
       return Review.find(params).sort({ createdAt: -1 });

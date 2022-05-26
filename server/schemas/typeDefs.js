@@ -59,6 +59,8 @@ const typeDefs = gql`
     reviews(firstName: String): [Review]
     review(_id: ID!): Review
     findReviews(_id: ID!): Review
+    getProduct(_id: ID!): Product
+
   }
 
   type Mutation {

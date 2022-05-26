@@ -84,3 +84,18 @@ export const QUERY_ME_BASIC = gql`
   }
 `;
 
+
+export const QUERY_PRODUCT = gql 
+`
+query getProduct($_id: ID!) {
+  product(_id: $_id) {
+    _id
+ 		reviews{
+      _id
+	}
+    }
+    
+    
+  }
+`;
+
