@@ -1,10 +1,53 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Category, Order } = require('../models');
+const { User, Product, Category} = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
+    findReviews: async(parent, args, context) => {
+      const productInfo = await Product.findById({_id: args._id}).populate({
+        populate: 'reviews'
+      })
+
+      return productInfo;
+
+    },
+
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findOne({ _id: context.user._id }).populate({
+          path: 'users.reviews',
+          populate: 'reviews'
+        })
+
+        return user;
+      }
+
+      throw new AuthenticationError('Not logged in');
+    },
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('thoughts')
+        .populate('friends');
+    },
+    user: async (parent, { userName }) => {
+      const user = await User.findOne({ userName })
+        .select('-__v -password')
+      console.log(user);
+      const {ratedProducts} = user;
+
+      const products = [];
+
+      for (let item in ratedProducts) {
+        console.log(ratedProducts[item])
+        products.push(await Product.findOne(ratedProducts[item]))
+        
+      }
+
+      return {user, products}
+        
+    },
     categories: async () => {
       return await Category.find();
     },
@@ -26,56 +69,12 @@ const resolvers = {
     product: async (parent, { _id }) => {
       return await Product.findById(_id).populate('category');
     },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
-        });
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-
-      throw new AuthenticationError('Not logged in');
+    reviews: async (parent, { lastName }) => {
+      const params = lastName ? { lastName } : {};
+      return Review.find(params).sort({ createdAt: -1 });
     },
-    order: async (parent, { _id }, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
-        });
-
-        return user.orders.id(_id);
-      }
-
-      throw new AuthenticationError('Not logged in');
-    },
-    checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
-      const line_items = [];
-
-      const { products } = await order.populate('products').execPopulate();
-
-      for (let i = 0; i < products.length; i++) {
-        const product = await stripe.products.create({
-          name: products[i].name,
-          description: products[i].description,
-          images: [`${url}/images/${products[i].image}`]
-        });
-      }
-
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items,
-        mode: 'payment',
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`
-      });
-
-      return { session: session.id };
+    review: async (parent, { _id }) => {
+      return Review.findOne({ _id });
     }
   },
   Mutation: {
@@ -85,17 +84,42 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { products }, context) => {
-      console.log(context);
+    
+    addReview: async (parent, { productId, reviewBody }, context) => {
       if (context.user) {
-        const order = new Order({ products });
 
-        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+        const user = await User.findOne({ _id: context.user._id }).populate({
+          path: 'users.ratedProducts',
+          populate: 'ratedProducts'
+        })
 
-        return order;
+        const alreadyRated = user.ratedProducts.includes(productId)
+
+        console.log (alreadyRated)
+
+        if (!alreadyRated) {
+
+          // see if userId exists already for that product.  If so, then just return, if not continue...
+        const updatedProduct = await Product.findOneAndUpdate(
+          { _id: productId },
+          { $push: { reviews: { reviewBody, firstName: context.user.firstName, userName: context.user.userName, userId: context.user._id } } },
+          { new: true, runValidators: true }
+        );
+        
+
+
+          console.log ('NOW RATED!')
+        
+
+        
+        return updatedProduct;
+      } else {
+        throw new AuthenticationError("You have already rated this item!")
       }
 
-      throw new AuthenticationError('Not logged in');
+    }
+
+      throw new AuthenticationError('You need to be logged in!');
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
@@ -104,11 +128,8 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    updateProduct: async (parent, { _id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
 
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
-    },
+  
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -125,8 +146,22 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addRatedProduct: async (parent, { productId}, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { ratedProducts: productId} },
+          { new: true }
+        ).populate('ratedProducts');
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
     }
   }
 };
+  
 
 module.exports = resolvers;

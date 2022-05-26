@@ -29,6 +29,7 @@ export const ADD_ORDER = gql`
 
 export const ADD_USER = gql`
   mutation addUser(
+    $userName: String!
     $firstName: String!
     $lastName: String!
     $email: String!
@@ -37,6 +38,7 @@ export const ADD_USER = gql`
     addUser(
       firstName: $firstName
       lastName: $lastName
+      userName: $userName
       email: $email
       password: $password
     ) {
@@ -47,3 +49,34 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_REVIEW = gql`
+  mutation addReview($productId: ID!, $reviewBody: String!) {
+    addReview(productId: $productId, reviewBody: $reviewBody) {
+      _id
+      reviews {
+        _id
+        reviewBody
+        createdAt
+        firstName
+        userName
+        userId
+      }
+    }
+  }
+`;
+
+export const ADD_RATED_PRODUCT = gql`
+  mutation addRatedProduct($id: ID!) {
+    addRatedProduct(productId: $id) {
+      _id
+      ratedProductCount
+      ratedProducts {
+        _id
+        
+        
+      }
+    }
+  }
+`;
+

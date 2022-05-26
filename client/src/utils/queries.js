@@ -7,6 +7,13 @@ export const QUERY_PRODUCTS = gql`
       name
       description
       image
+      reviews {
+        _id
+        createdAt
+        reviewBody
+        firstName
+        userName
+      }
       category {
         _id
       }
@@ -14,13 +21,6 @@ export const QUERY_PRODUCTS = gql`
   }
 `;
 
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($products: [ID]!) {
-    checkout(products: $products) {
-      session
-    }
-  }
-`;
 
 export const QUERY_ALL_PRODUCTS = gql`
   {
@@ -45,20 +45,42 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_USER = gql`
-  {
+query user($userName: String!) {
+  user(userName: $userName) {
     user {
-      firstName
-      lastName
-      orders {
+      _id
+    }
+    products {
+      _id
+      name
+      image
+    }
+  }
+}
+`
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      firstNname
+      email
+      reviews {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          image
-        }
+        reviewBody
+        createdAt
       }
     }
   }
 `;
+
+export const QUERY_ME_BASIC = gql`
+  {
+    me {
+      _id
+      firstNname
+      email
+    }
+  }
+`;
+

@@ -3,6 +3,7 @@ const { User, Product, Category } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
+  await User.deleteMany({});
 
   const categories = await Category.insertMany([
     { name: 'Light' },
@@ -24,7 +25,7 @@ db.once('open', async () => {
       category: categories[0]._id
     },
     {
-      name: 'Peets Luminosa Breakfast Blend',
+      name: 'Peets Luminosa Breakfast',
       description:
         'Formerly known as Colombia Luminosa, we approached this bright blend, our first light roast, as we do all our coffees: carefully select the very best beans, then hand roast them in small batches to achieve their utmost flavor.',
       image: 'lightpeets.jpg',
@@ -45,7 +46,7 @@ db.once('open', async () => {
       image: 'mediumcaribou.jpg'
     },
     {
-      name: 'Seattle\'s Best Level 4 Medium-Dark & Rich Ground Coffee',
+      name: 'Seattle\'s Medium-Dark&Rich Ground',
       category: categories[1]._id,
       description:
         'From the first sip you know this one is special. A bold and roasty blend of premium beans that brews up a perfectly balanced cup of coffee.',
@@ -87,6 +88,7 @@ db.once('open', async () => {
 
   await User.create({
     firstName: 'Pamela',
+    userName: "PamBam",
     lastName: 'Washington',
     email: 'pamela@testmail.com',
     password: 'password12345',
@@ -99,6 +101,7 @@ db.once('open', async () => {
 
   await User.create({
     firstName: 'Elijah',
+    userName: 'EliSchmeli',
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345'

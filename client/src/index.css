@@ -198,6 +198,12 @@ input:focus {
   padding-bottom: var(--spacing-two);
 }
 
+.px-auto {
+  padding-right: auto;
+  padding-left: auto;
+}
+
+
 .card {
   width: 25%;
   text-align: center;
@@ -209,6 +215,30 @@ input:focus {
 
 .products {
   border-radius: 20%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.border {
+  border: 5px solid green;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+
+.borderred{
+  border: 5px solid black;
+  border-radius: 20px;
+  margin-top: 5px;
 }
 
 @media screen and (max-width: 768px) {

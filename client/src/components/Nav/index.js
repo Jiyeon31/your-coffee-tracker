@@ -6,13 +6,19 @@ import './style.css';
 
 function Nav() {
 
+  
+  
+
   function showNavigation() {
+    
     if (Auth.loggedIn()) {
+
+      const userName = Auth.getProfile().data.userName;
       return (
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to="/success">
-              Favorite List
+            <Link to={`/profile/?user=${userName}`}>
+              Me
             </Link>
           </li>
           <li className="mx-1">

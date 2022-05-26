@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import ReviewForm from '../components/ReviewForm';
+import ReviewList from '../components/ReviewList';
+
+import Auth from '../utils/auth';
 
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
@@ -10,7 +14,7 @@ import {
   ADD_TO_CART,
   UPDATE_PRODUCTS,
 } from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_PRODUCTS} from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
@@ -24,6 +28,8 @@ function Detail() {
 
   const { products, cart } = state;
 
+  
+  
   useEffect(() => {
     // already in global store
     if (products.length) {
@@ -91,8 +97,14 @@ function Detail() {
 
           <p>{currentProduct.description}</p>
 
+          <img
+            src={`/images/${currentProduct.image}`}
+            alt={currentProduct.name}
+            className="products"
+          />
+
           <p>
-            <button onClick={addToCart}>Add to favorites</button>
+            <button onClick={addToCart}>Add to favorite</button>
             <button
               disabled={!cart.find((p) => p._id === currentProduct._id)}
               onClick={removeFromCart}
@@ -100,12 +112,12 @@ function Detail() {
               Remove from your favorites
             </button>
           </p>
-
-          <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
-            className="products"
-          />
+                    <div>
+          {Auth.loggedIn() && <ReviewForm productId={currentProduct._id} name = {currentProduct.name} image = {currentProduct.image} />}
+          </div>
+          <div>
+          <ReviewList reviews={currentProduct.reviews} />
+          </div>
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}

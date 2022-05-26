@@ -20,7 +20,7 @@ function FavoriteList() {
         {user ? (
           <>
             <h2>
-              Favorite List for {user.firstName} {user.lastName}
+              Favorite List for {user.userName}
             </h2>
             {user.orders.map((order) => (
               <div key={order._id} className="my-2">

@@ -12,24 +12,20 @@ const typeDefs = gql`
     description: String
     image: String
     category: Category
+    reviewCount: Int
+    reviews: [Review]
   }
 
-  type Order {
-    _id: ID
-    purchaseDate: String
-    products: [Product]
-  }
 
   type User {
     _id: ID
     firstName: String
     lastName: String
+    userName: String
+    ratedProductCount: Int
     email: String
-    orders: [Order]
-  }
-
-  type Checkout {
-    session: ID
+    ratedProducts: [Product]
+    
   }
 
   type Auth {
@@ -37,21 +33,40 @@ const typeDefs = gql`
     user: User
   }
 
+  type Review {
+    _id: ID
+    reviewBody: String
+    createdAt: String
+    firstName: String
+    userName: String
+    userId: String
+  }
+
+  type queryUser {
+    user: User
+    products: [Product]
+  }
+
+  
+  
   type Query {
+    me: User
+    users: [User]
+    user(userName: String!): queryUser
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
+    reviews(firstName: String): [Review]
+    review(_id: ID!): Review
+    findReviews(_id: ID!): Review
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!, userName: String!): Auth
+    updateUser(firstName: String, lastName: String, email: String, password: String, userName: String): User
     login(email: String!, password: String!): Auth
+    addReview(productId: ID!, reviewBody: String!): Product
+    addRatedProduct(productId: ID!): User
   }
 `;
 
