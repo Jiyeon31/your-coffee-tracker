@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_RATED_PRODUCT, ADD_REVIEW } from '../../utils/mutations';
 import { useQuery } from '@apollo/client';
-import { QUERY_PRODUCT} from '../../utils/queries';
+import { QUERY_PRODUCTS} from '../../utils/queries';
 
 
 
@@ -19,17 +19,18 @@ const ReviewForm = ({ productId, name, image }) => {
         // update thought array's cache
         // could potentially not exist yet, so wrap in a try/catch
         console.log(productId)
-        const {product}  = cache.readQuery({ 
-          query: QUERY_PRODUCT,      
+        const {products}  = cache.readQuery({ 
+          query: QUERY_PRODUCTS,      
           variables: {_id: productId}      
                
         
         });
         console.log ("we trying");
-        console.log(product);
+        console.log(products);
         cache.writeQuery({
-          query: QUERY_PRODUCT,
-          data: { product: [addReview, ...product] },
+          query: QUERY_PRODUCTS,
+          variables: {id: productId},
+          data: { products: [addReview, ...products] },
         });
       } catch (e) {
         console.error(e);
