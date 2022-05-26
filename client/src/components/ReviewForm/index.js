@@ -68,7 +68,7 @@ const ReviewForm = ({ productId, name, image }) => {
           placeholder="Leave a review to this product..."
           value={reviewBody}
           className="form-input col-12 col-md-9 borderred" rows="5"
-           
+          cols="100"
           onChange={handleChange}
         ></textarea>
 
