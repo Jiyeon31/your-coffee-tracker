@@ -15,9 +15,6 @@ const RatedList = ({ratedProducts }) => {
     return (
     <div>
         {ratedProducts.map(ratedProduct => (
-        
-       
-          
           <ProductItem
               key={ratedProduct._id}
               _id={ratedProduct._id}

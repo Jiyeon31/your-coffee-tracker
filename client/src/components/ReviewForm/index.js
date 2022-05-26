@@ -53,7 +53,7 @@ const ReviewForm = ({ productId, name, image }) => {
   };
 
   return (
-    <div>
+    <div className=''>
       <p
         className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
       >
@@ -67,7 +67,8 @@ const ReviewForm = ({ productId, name, image }) => {
         <textarea
           placeholder="Leave a review to this product..."
           value={reviewBody}
-          className="form-input col-12 col-md-9"
+          className="form-input col-12 col-md-9 borderred" rows="5"
+           
           onChange={handleChange}
         ></textarea>
 

@@ -229,6 +229,18 @@ input:focus {
   text-align: left;
 }
 
+.border {
+  border: 5px solid green;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+
+.borderred{
+  border: 5px solid black;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;

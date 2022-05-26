@@ -7,10 +7,10 @@ const ReviewList = ({ reviews, title }) => {
       <div className="card-header">
         <span className="text-light">{title}</span>
       </div>
-      <div className="card-body">
+      <div className="">
         {reviews &&
           reviews.map(review => (
-            <p className="pill mb-3" key={review._id}>
+            <p className="border" key={review._id}>
               {review.reviewBody} {' '}
               <Link to={`/profile/?user=${review.userName}`} style={{ fontWeight: 700 }}>
                 {review.userName} on {review.createdAt}
