@@ -39,7 +39,7 @@ const ReviewForm = ({ productId, name, image }) => {
         
       });
 
-      
+      window.location.reload()
       
 
       await 
