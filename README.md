@@ -34,9 +34,6 @@
   
   You can contact with me through my email at the bottom
   
-  ## Tests
-  
-  n/a
   ---
   
   ## Questions?
