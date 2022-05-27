@@ -44,8 +44,8 @@
 
   
   Email: 
-  Jiyeon You - zhdzhddlx@gmail.com,
-  Junjie Wu - jay807541931@gmail.com,
-  Steve Calebrese - steve.calebrese@gmail.com,
+  Jiyeon You - zhdzhddlx@gmail.com<br />
+  Junjie Wu - jay807541931@gmail.com<br />
+  Steve Calebrese - steve.calebrese@gmail.com<br />
   Refael Aryeh - phillyaryeh@gmail.com
   
