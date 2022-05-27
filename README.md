@@ -14,7 +14,6 @@
   * [Usage](#usage)
   * [License](#license)
   * [Contributing](#contributing)
-  * [Tests](#tests)
   * [License](#license)
   
   ## Installation
@@ -34,18 +33,19 @@
   
   You can contact with me through my email at the bottom
   
-  ## Tests
-  
-  n/a
   ---
   
   ## Questions?
-  <img src="https://avatars.githubusercontent.com/u/94870473?v=4" alt="Jiyeon31" width="30%" height="30%" />
-  
+
   For any questions, please contact me with the information below:
  
-  GitHub: (https://github.com/Jiyeon31)<br />
+  GitHub: https://github.com/Jiyeon31<br />
+  Heroku: https://yakattak-coffee1.heroku.app<br />
 
   
-  Email: zhdzhddlx@gmail.com
+  Email: 
+  Jiyeon You - zhdzhddlx@gmail.com<br />
+  Junjie Wu - jay807541931@gmail.com<br />
+  Steve Calebrese - steve.calebrese@gmail.com<br />
+  Refael Aryeh - phillyaryeh@gmail.com
   
