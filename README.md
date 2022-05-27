@@ -46,14 +46,15 @@
 
   For any questions, please contact me with the information below:
  
-  GitHub: https://github.com/Jiyeon31<br />
-          https://github.com/HandsomeDingor<br />
-          https://github.com/yakattak<br />
-          https://github.com/rafa1326<br />
+  GitHub:<br />
+  Jiyeon You - https://github.com/Jiyeon31<br />
+  Junjie Wu - https://github.com/HandsomeDingor<br />
+  Steve Calebrese - https://github.com/yakattak<br />
+  Refael Aryeh - https://github.com/rafa1326<br />
   Heroku: https://yakattak-coffee1.heroku.app<br />
 
   
-  Email: 
+  Email:<br /> 
   Jiyeon You - zhdzhddlx@gmail.com<br />
   Junjie Wu - jay807541931@gmail.com<br />
   Steve Calebrese - steve.calebrese@gmail.com<br />
