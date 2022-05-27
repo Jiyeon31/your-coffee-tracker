@@ -13,6 +13,7 @@
   * [Installation](#installation)
   * [Usage](#usage)
   * [License](#license)
+  * [Screenshots](#screenshots)
   * [Contributing](#contributing)
   * [License](#license)
   
@@ -28,6 +29,12 @@
     
   ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
   
+  ## Screenshots
+  
+  ![alt text](https://github.com/Jiyeon31/your-coffee-tracker/blob/main/client/src/assets/screenshots/main.jpg)
+  ![alt text](https://github.com/Jiyeon31/your-coffee-tracker/blob/main/client/src/assets/screenshots/product.jpg)
+  ![alt text](https://github.com/Jiyeon31/your-coffee-tracker/blob/main/client/src/assets/screenshots/profile.jpg)
+  ![alt text](https://github.com/Jiyeon31/your-coffee-tracker/blob/main/client/src/assets/screenshots/favorite.jpg)
   
   ## Contributing
   
