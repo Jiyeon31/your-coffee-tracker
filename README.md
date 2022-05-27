@@ -13,6 +13,7 @@
   * [Installation](#installation)
   * [Usage](#usage)
   * [License](#license)
+  * [Screenshots](#screenshots)
   * [Contributing](#contributing)
   * [License](#license)
   
@@ -28,6 +29,12 @@
     
   ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
   
+  ## Screenshots
+  
+  ![alt text](https://github.com/Jiyeon31/your-coffee-tracker/blob/main/client/src/assets/screenshots/main.jpg)
+  ![alt text](https://github.com/Jiyeon31/your-coffee-tracker/blob/main/client/src/assets/screenshots/product.jpg)
+  ![alt text](https://github.com/Jiyeon31/your-coffee-tracker/blob/main/client/src/assets/screenshots/profile.jpg)
+  ![alt text](https://github.com/Jiyeon31/your-coffee-tracker/blob/main/client/src/assets/screenshots/favorite.jpg)
   
   ## Contributing
   
@@ -39,11 +46,15 @@
 
   For any questions, please contact me with the information below:
  
-  GitHub: https://github.com/Jiyeon31<br />
+  GitHub:<br />
+  Jiyeon You - https://github.com/Jiyeon31<br />
+  Junjie Wu - https://github.com/HandsomeDingor<br />
+  Steve Calebrese - https://github.com/yakattak<br />
+  Refael Aryeh - https://github.com/rafa1326<br />
   Heroku: https://yakattak-coffee1.heroku.app<br />
 
   
-  Email: 
+  Email:<br /> 
   Jiyeon You - zhdzhddlx@gmail.com<br />
   Junjie Wu - jay807541931@gmail.com<br />
   Steve Calebrese - steve.calebrese@gmail.com<br />
