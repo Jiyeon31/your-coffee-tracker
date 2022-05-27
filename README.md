@@ -19,7 +19,7 @@
   
   ## Installation
   
-  npm install - npm run develop or visit your-coffee-tracker.herokuapp.com
+  npm install - npm run develop or visit https://yakattak-coffee1.herokuapp.com
   
   ## Usage 
   
@@ -51,7 +51,7 @@
   Junjie Wu - https://github.com/HandsomeDingor<br />
   Steve Calebrese - https://github.com/yakattak<br />
   Refael Aryeh - https://github.com/rafa1326<br />
-  Heroku: https://yakattak-coffee1.heroku.app<br />
+  Heroku: https://yakattak-coffee1.herokuapp.com<br />
 
   
   Email:<br /> 
