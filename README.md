@@ -47,6 +47,9 @@
   For any questions, please contact me with the information below:
  
   GitHub: https://github.com/Jiyeon31<br />
+          https://github.com/HandsomeDingor<br />
+          https://github.com/yakattak<br />
+          https://github.com/rafa1326<br />
   Heroku: https://yakattak-coffee1.heroku.app<br />
 
   
